@@ -1,1 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+
+button {
+  cursor: pointer;
+  border: initial;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+}
+
+.primary {
+  background-color: rgb(13, 110, 253);
+  color: rgb(255, 255, 255);
+}
+
+.danger {
+  background-color: rgb(220, 53, 69);
+  color: rgb(255, 255, 255);
+}
+.secondary {
+  background-color: rgb(233, 236, 239);
+  color: rgb(33, 37, 41);
+}
