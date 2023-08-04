@@ -1,0 +1,32 @@
+<div *ngIf="author$ | async as author" class="container">
+  <app-author-card [author]="author"></app-author-card>
+  <div class="action-btns">
+    <button (click)="handleOpenDialog()" class="primary">add book</button>
+    <select [formControl]="sort">
+      <option [value]="null" hidden selected>Sort</option>
+      <option value="title">By Title</option>
+      <option value="year">By Published Year</option>
+    </select>
+  </div>
+  <div class="list" *ngIf="author.books.length > 0; else noBooks">
+    <app-book
+      *ngFor="let book of author.books; let index = index"
+      [book]="book"
+      (delete)="handleDelete(index)"
+      (edit)="handleEditDialog(index, book)"
+    ></app-book>
+  </div>
+  <ng-template #noBooks>
+    <div class="empty-list">No Books To show!!</div>
+  </ng-template>
+</div>
+
+<app-add-edit-book
+  *ngIf="showDialog"
+  (close)="handleDialogClose()"
+  (add)="handleAddEdit('add')"
+  (edit)="handleAddEdit('edit')"
+  [bookFormGroup]="bookFormGroup"
+  [showFormErrors]="showFormErrors"
+  [editMode]="editMode"
+></app-add-edit-book>

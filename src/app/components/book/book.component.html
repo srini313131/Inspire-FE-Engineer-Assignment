@@ -1,0 +1,10 @@
+<img [src]="book?.imageUrl" />
+<p>
+  <a [href]="book?.purchaseLink" target="_blank">{{ book?.title }},</a>
+
+  {{ book?.PublishDate ? book?.PublishDate : "----" }}
+</p>
+<div class="btns">
+  <button (click)="handleEdit()" class="primary">Edit</button>
+  <button (click)="handleDelete()" class="danger">Delete</button>
+</div>

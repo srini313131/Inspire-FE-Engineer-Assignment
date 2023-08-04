@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="header">
+    <h2>{{ editMode ? "Edit " : "Add " }}Book</h2>
+    <span class="close" (click)="handleClose()">&times;</span>
+  </div>
+  <div class="content" [formGroup]="bookFormGroup">
+    <div class="form-control">
+      <label for="title">Title:</label>
+      <input type="text" id="title" formControlName="title" />
+    </div>
+
+    <div class="form-control">
+      <label for="year">Year:</label>
+      <input type="text" id="year" formControlName="PublishDate" />
+    </div>
+    <div class="form-control" *ngIf="!editMode">
+      <label for="img">Select Image:</label>
+      <input
+        type="file"
+        id="img"
+        formControlName="imageUrl"
+        accept="image/png, image/jpeg"
+      />
+    </div>
+  </div>
+  <div *ngIf="showFormErrors" style="color: red">*Title Is Required</div>
+  <div class="footer">
+    <button (click)="handleAdd()" class="primary" *ngIf="!editMode">Add</button>
+    <button (click)="handleEdit()" class="primary" *ngIf="editMode">
+      Submit
+    </button>
+    <button (click)="handleClose()" class="secondary">Cancel</button>
+  </div>
+</div>
